@@ -1,26 +1,26 @@
 import React from "react";
-import Title, { TitleSize } from "../../ui/title/title";
+import Title from "../../ui/title/title";
 import FeatureCard from "../../ui/feature-card/feature-card";
 import Button from "../../ui/button/button";
-import "../feature-list/style.css";
+import { FeatureSection, List, Item } from "./styles";
 
 function FeatureList({ features }) {
   return (
-    <section className="feature-list">
+    <FeatureSection>
       {features?.length ? (
         <>
-          <Title size={TitleSize.SMALL}>Почему фермерские продукты лучше?</Title>
-          <ul className="feature-list__list">
+          <Title TitleLevel={2}>Почему фермерские продукты лучше?</Title>
+          <List>
             {features.map((feature) => (
-              <li className="feature-list__item" key={feature.id}>
+              <Item key={feature.id}>
                 <FeatureCard {...feature} />
-              </li>
+              </Item>
             ))}
-          </ul>
-          <Button>Купить</Button>
+          </List>
+          <Button minWidth={260} link="">Купить</Button>
         </>
       ) : null}
-    </section>
+    </FeatureSection>
   );
 }
 

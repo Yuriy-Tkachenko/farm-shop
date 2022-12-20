@@ -1,20 +1,16 @@
-.logo__link {
+import styled from "styled-components";
+
+export const StyledLogo = styled.a`
   text-decoration: none;
   display: flex;
   align-items: center;
-}
+`;
 
-.logo__img {
-  width: 44px;
-  height: 44px;
-}
-
-.logo__text {
-  font-family: 'Inter';
+export const Text = styled.span`
   font-style: normal;
   font-weight: 700;
   font-size: 28px;
   line-height: 115%;
-  color: #333333;
+  color: ${(props) => props.theme.blackColor};
   margin-left: 24px;
-}
+`;

@@ -1,29 +1,20 @@
 import React from "react";
 import Title, { TitleSize } from "../title/title";
-import FeatureIcon from "../feature-icon/feature-icon";
-import "../feature-card/style.css";
+import { Feature, Image, TextWrapper, Header, Owner, Text } from "./styles";
 
-function FeatureCard({ feature, name, image, isNegative, about }) {
+function FeatureCard({ title, owner, image, isNegative, about }) {
   return (
-    <article className={`feature-card${isNegative ? " feature_negative" : ""}`}>
-      <figure className="feature-card__figure">
-        <div className="feature-card__wrapper">
-          <img 
-            src={image}
-            className="feature-card__image"
-            width={52}
-            height={52}
-            alt="изображение преимущества" 
-          />
-          <div className="feature-card__text-wrapper">
-            <FeatureIcon className="feature-card__icon" feature={feature} />
-            <Title size={TitleSize.LITTLE}>{name}</Title>
-          </div>
-        </div>
-        <p className="feature-card__text" dangerouslySetInnerHTML={{ __html: about }} />
-      </figure>
-    </article>
-  )
+    <Feature isNegative={isNegative}>
+      <Header>
+        <Image width={56} height={56} src={image} alt={title} />
+        <TextWrapper>
+          <Owner isNegative={isNegative}>{owner}</Owner>
+          <Title as="h3" size={TitleSize.LITTLE}>{title}</Title>
+        </TextWrapper>
+      </Header>
+      <Text dangerouslySetInnerHTML={{ __html: about }} />
+    </Feature>
+  );
 };
 
 export default FeatureCard;

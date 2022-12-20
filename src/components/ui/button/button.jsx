@@ -1,9 +1,15 @@
 import React from "react";
-import "../button/style.css";
+import { StyledButton } from "./style";
 
-function Button({ children }) {
+function Button({ children, minWidth, link, className }) {
   return (
-    <button className="button" type="button">{ children }</button>
+    <StyledButton 
+      $minWidth={minWidth}
+      {...(link ? { href: link } : { as: "button", type: "button" })}
+      className={className}
+    >
+      {children}
+    </StyledButton>
   )
 };
 
